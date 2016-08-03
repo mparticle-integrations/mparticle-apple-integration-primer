@@ -42,11 +42,6 @@
         return nil;
     }
     
-    NSString *token = configuration[@"apiKey"];
-    if (token.length < 1) {
-        return nil;
-    }
-    
     _configuration = configuration;
     
     if (startImmediately) {
@@ -61,17 +56,8 @@
     static dispatch_once_t kitPredicate;
 
     dispatch_once(&kitPredicate, ^{
-        
-        NSString *token = self.configuration[@"apiKey"];
-        
-        [Primer startWithToken:token];
 
         _started = YES;
-        
-        BOOL automaticPresentation = [self.configuration[@"autoPresent"] boolValue];
-        if (automaticPresentation) {
-            [Primer presentExperience];
-        }
 
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary *userInfo = @{mParticleKitInstanceKey: [[self class] kitCode]};
