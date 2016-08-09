@@ -41,6 +41,11 @@
     if (!self) {
         return nil;
     }
+
+    if (![Primer isInitialized]) {
+        MPILogError(@"You must initialize the Primer SDK (e.g. using `startWithToken`) before starting mParticle!");
+        return nil;
+    }
     
     _configuration = configuration;
     
