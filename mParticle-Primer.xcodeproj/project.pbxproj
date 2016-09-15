@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DB45D60D1D3EC77800C4055E /* mParticle_Primer.h in Headers */ = {isa = PBXBuildFile; fileRef = DB45D60C1D3EC77800C4055E /* mParticle_Primer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB45D6161D3EC9BC00C4055E /* MPKitPrimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DB45D6141D3EC9BC00C4055E /* MPKitPrimer.h */; };
+		DB45D6161D3EC9BC00C4055E /* MPKitPrimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DB45D6141D3EC9BC00C4055E /* MPKitPrimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB45D6171D3EC9BC00C4055E /* MPKitPrimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB45D6151D3EC9BC00C4055E /* MPKitPrimer.m */; };
 		DB45D61C1D3ECD8D00C4055E /* mParticle_Apple_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB45D6181D3ECD7A00C4055E /* mParticle_Apple_SDK.framework */; };
 		DB45D61D1D3ECD8D00C4055E /* Primer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB45D6191D3ECD7A00C4055E /* Primer.framework */; };
