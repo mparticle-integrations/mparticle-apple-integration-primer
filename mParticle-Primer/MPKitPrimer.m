@@ -18,7 +18,12 @@
 
 #import "MPKitPrimer.h"
 
+#if defined(__has_include) && __has_include(<Primer/Primer.h>)
 #import <Primer/Primer.h>
+#else
+#import "Primer.h"
+#endif
+
 
 @implementation MPKitPrimer
 
