@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "mParticle-Primer"
-    s.version          = "6.12.3"
+    s.version          = "6.13.0"
     s.summary          = "Primer integration for mParticle"
 
     s.description      = <<-DESC
@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
 
     s.ios.deployment_target = "8.0"
     s.ios.source_files      = 'mParticle-Primer/*.{h,m,mm}'
-    s.ios.dependency 'mParticle-Apple-SDK/mParticle', '~> 6.12.3'
+    s.ios.dependency 'mParticle-Apple-SDK/mParticle', '~> 6.13.0'
     s.ios.dependency 'Primer', '3.2.3'
 end
