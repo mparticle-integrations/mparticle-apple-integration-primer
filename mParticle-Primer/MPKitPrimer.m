@@ -34,31 +34,27 @@
 }
 
 + (void)load {
-    MPKitRegister *kitRegister = [[MPKitRegister alloc] initWithName:@"Primer" className:@"MPKitPrimer" startImmediately:YES];
+    MPKitRegister *kitRegister = [[MPKitRegister alloc] initWithName:@"Primer" className:@"MPKitPrimer"];
     [MParticle registerExtension:kitRegister];
 }
 
 #pragma mark - Kit instance and lifecycle
 
-- (nonnull instancetype)initWithConfiguration:(nonnull NSDictionary *)configuration startImmediately:(BOOL)startImmediately {
-
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
+- (MPKitExecStatus *)didFinishLaunchingWithConfiguration:(NSDictionary *)configuration {
+    MPKitExecStatus *execStatus = nil;
 
     if (![Primer isInitialized]) {
         NSLog(@"You must initialize the Primer SDK (e.g. using `startWithToken`) before starting mParticle!");
-        return nil;
+        execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeRequirementsNotMet];
+        return execStatus;
     }
 
     _configuration = configuration;
 
-    if (startImmediately) {
-        [self start];
-    }
+    [self start];
 
-    return self;
+    execStatus = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeSuccess];
+    return execStatus;
 }
 
 - (void)start {
