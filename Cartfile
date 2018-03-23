@@ -1,2 +1,2 @@
 github "goprimer/primer-ios-sdk" == 3.2.3
-github "mparticle/mparticle-apple-sdk" ~> 6.16.0
+github "mparticle/mparticle-apple-sdk" ~> 6.17.0
