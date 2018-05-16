@@ -88,7 +88,7 @@
 
 #pragma mark - User attributes and identities
 
-- (nonnull MPKitExecStatus *)setUserAttribute:(nonnull NSString *)key value:(nullable NSString *)value {
+- (nonnull MPKitExecStatus *)setUserAttribute:(nonnull NSString *)key value:(nonnull NSString *)value {
 
     if (!value) {
         return [self statusWithCode:MPKitReturnCodeFail];
