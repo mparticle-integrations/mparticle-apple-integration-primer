@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "mParticle-Primer"
-    s.version          = "7.7.0"
+    s.version          = "7.7.1"
     s.summary          = "Primer integration for mParticle"
 
     s.description      = <<-DESC
