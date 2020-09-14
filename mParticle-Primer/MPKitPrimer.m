@@ -82,29 +82,37 @@
     return [self statusWithCode:MPKitReturnCodeSuccess];
 }
 
-#pragma mark - e-Commerce
+#pragma mark - Events
 
-- (nonnull MPKitExecStatus *)logCommerceEvent:(nonnull MPCommerceEvent *)commerceEvent {
+- (nonnull MPKitExecStatus *)logBaseEvent:(nonnull MPBaseEvent *)event {
+    if ([event isKindOfClass:[MPEvent class]]) {
+        return [self routeEvent:(MPEvent *)event];
+    } else if ([event isKindOfClass:[MPCommerceEvent class]]) {
+        return [self routeCommerceEvent:(MPCommerceEvent *)event];
+    } else {
+        return [[MPKitExecStatus alloc] initWithSDKCode:@(MPKitInstanceAppboy) returnCode:MPKitReturnCodeUnavailable];
+    }
+}
+
+- (nonnull MPKitExecStatus *)routeCommerceEvent:(nonnull MPCommerceEvent *)commerceEvent {
     
     MPKitExecStatus *status = [[MPKitExecStatus alloc] initWithSDKCode:[[self class] kitCode] returnCode:MPKitReturnCodeSuccess forwardCount:0];
     
     NSArray *expandedInstructions = [commerceEvent expandedInstructions];
     for (MPCommerceEventInstruction *commerceEventInstruction in expandedInstructions) {
-        [self logEvent:commerceEventInstruction.event];
+        [self routeEvent:commerceEventInstruction.event];
         [status incrementForwardCount];
     }
     
     return status;
 }
 
-#pragma mark - Events
-
-- (nonnull MPKitExecStatus *)logEvent:(nonnull MPEvent *)event {
+- (nonnull MPKitExecStatus *)routeEvent:(nonnull MPEvent *)event {
     
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObject:@"mParticle" forKey:@"pmr_event_api"];
     
-    if (event.info) {
-        [parameters addEntriesFromDictionary:event.info];
+    if (event.customAttributes) {
+        [parameters addEntriesFromDictionary:event.customAttributes];
     }
     
     [Primer trackEventWithName:event.name parameters:parameters];
@@ -114,7 +122,7 @@
 
 - (nonnull MPKitExecStatus *)logScreen:(nonnull MPEvent *)event {
     
-    return [self logEvent:event];;
+    return [self routeEvent:event];;
 }
 
 #pragma mark - Assorted
