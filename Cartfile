@@ -1,2 +1,2 @@
 github "goprimer/primer-ios-sdk" ~> 3.6
-github "mparticle/mparticle-apple-sdk" ~> 8.0.0-beta
+github "mparticle/mparticle-apple-sdk" ~> 8.0
